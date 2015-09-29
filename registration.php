@@ -1,5 +1,18 @@
 <?php 
-
+session_start();
+$output = "";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+  if(!isset($_SESSION["randStr"]))
+  {
+    $output = "Include pictures!";
+  } else{
+    if($_SESSION["randStr"] == $_POST["answer"])
+    $output = "YES";
+  else
+    $output = "NO";
+  
+  }
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -22,7 +35,7 @@
     <input type="submit" value="Подтвердить">
   </form>
   <?php 
-  
+  echo $output;
   ?>
 </body>
 
